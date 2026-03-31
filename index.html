@@ -1,30 +1,173 @@
 ---
-# C'EST ICI QUE LES CASES POUR LE CLIENT VONT APPARAÎTRE
+# ============================================================
+# CONFIGURATION POUR LE CLIENT (CloudCannon)
+# ============================================================
+
+# Infos générales
 nom_du_resto: "La Table des Gourmets"
-description: "Gastronomie française traditionnelle à Nouméa."
-telephone: "+687 12 34 56"
-image_fond: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
+description_seo: "La Table des Gourmets — Gastronomie française traditionnelle à Nouméa. Cuisine alsacienne, plats du terroir, produits frais et faits maison."
+
+# Section Hero (Accueil)
+hero:
+  image_fond: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
+  petit_titre: "Une expérience culinaire unique"
+  titre_principal: "Gastronomie Française"
+  sous_titre: "Cuisine authentique et produits du terroir au cœur de Nouméa"
+  texte_bouton: "Découvrir la carte"
+
+# La Carte (Le client peut ajouter/supprimer des plats ici)
+menu_categories:
+  - nom: "Nos Entrées"
+    plats:
+      - nom: "Escargots de Bourgogne"
+        prix: "2 100 F"
+        description: "Beurre persillé maison et ail frais."
+      - nom: "Foie Gras Maison"
+        prix: "3 200 F"
+        description: "Chutney de saison et pain brioché."
+  - nom: "Nos Plats Alsaciens"
+    plats:
+      - nom: "Choucroute Royale"
+        prix: "3 800 F"
+        description: "Chou artisanal, assortiment de charcuterie fine."
+
+# Section Notre Cuisine
+cuisine:
+  titre: "Une Passion pour le Terroir"
+  texte: "Chaque plat est une invitation au voyage à travers les régions de France. Nous privilégions les circuits courts et le fait-maison."
+  image: "https://images.unsplash.com/photo-1559339352-11d035aa65de"
+
+# Contact & Horaires
+contact:
+  telephone: "+687 12 34 56"
+  adresse: "123 Rue de la Gastronomie, Nouméa"
+  email: "contact@latabledesgourmets.nc"
+  horaires:
+    - jour: "Lundi - Vendredi"
+      heures: "11:30 – 14:00, 18:30 – 22:00"
+    - jour: "Samedi"
+      heures: "18:30 – 23:00"
+    - jour: "Dimanche"
+      heures: "Fermé"
 ---
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>{{ page.nom_du_resto }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ page.description_seo }}">
+    <title>{{ page.nom_du_resto }} — Gastronomie Française à Nouméa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: sans-serif; background: #f7f3ea; color: #111e2b; text-align: center; padding: 50px; }
-        .hero { background: url('{{ page.image_fond }}') center/cover; padding: 100px 20px; color: white; border-radius: 20px; }
-        h1 { font-size: 3rem; }
-        .btn { background: #c8a04a; color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; display: inline-block; margin-top: 20px; }
+        /* TOUT VOTRE STYLE EST CONSERVÉ À L'IDENTIQUE */
+        :root {
+            --navy: #111e2b; --navy-mid: #1a2d40; --gold: #c8a04a; --gold-light: #e5cc8a;
+            --cream: #f7f3ea; --cream-card: #fcf9f3; --text-muted: #7a7060;
+            --radius-card: 20px; --radius-btn: 20px; --header-h: 68px;
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.07); --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--navy); line-height: 1.65; }
+        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+        
+        /* Header */
+        .header { position: fixed; top: 0; width: 100%; height: var(--header-h); background: var(--navy); z-index: 1000; display: flex; align-items: center; }
+        .logo { font-size: 22px; font-weight: 700; color: var(--gold); text-decoration: none; }
+        
+        /* Hero */
+        .hero { position: relative; height: 100svh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; overflow: hidden; }
+        .hero__bg { position: absolute; inset: 0; z-index: -1; }
+        .hero__bg img { width: 100%; height: 100%; object-fit: cover; }
+        .hero__overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+        .hero__title { font-size: clamp(40px, 8vw, 72px); color: var(--gold); margin: 10px 0; }
+        .hero__cta { background: var(--gold); color: var(--navy); padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; text-transform: uppercase; display: inline-block; margin-top: 20px; }
+
+        /* Menu */
+        .menu-section { padding: 80px 0; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .menu-card { background: white; padding: 25px; border-radius: var(--radius-card); shadow: var(--shadow-card); border-left: 5px solid var(--gold); }
+        .prix { float: right; color: var(--gold); font-weight: 700; }
+
+        /* Cuisine */
+        .cuisine-section { padding: 80px 0; background: var(--navy); color: white; }
+        .cuisine-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .cuisine-img { width: 100%; border-radius: 20px; }
+
+        @media (max-width: 768px) { .cuisine-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <h1>{{ page.nom_du_resto }}</h1>
-        <p>{{ page.description }}</p>
-        <a href="tel:{{ page.telephone }}" class="btn">Appeler le restaurant : {{ page.telephone }}</a>
-    </div>
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">{{ page.nom_du_resto }}</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero__bg">
+            <img src="{{ page.hero.image_fond }}" alt="Restaurant">
+            <div class="hero__overlay"></div>
+        </div>
+        <div class="container" style="position: relative;">
+            <span style="letter-spacing: 3px; text-transform: uppercase; color: var(--gold-light);">{{ page.hero.petit_titre }}</span>
+            <h1 class="hero__title">{{ page.hero.titre_principal }}</h1>
+            <p style="font-size: 20px;">{{ page.hero.sous_titre }}</p>
+            <a href="#carte" class="hero__cta">{{ page.hero.texte_bouton }}</a>
+        </div>
+    </section>
+
+    <section id="carte" class="menu-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 40px;">Notre Carte</h2>
+            
+            {% for categorie in page.menu_categories %}
+            <div style="margin-top: 50px;">
+                <h3 style="color: var(--gold); font-size: 28px; text-align: center; border-bottom: 1px solid #ddd; padding-bottom: 10px;">{{ categorie.nom }}</h3>
+                <div class="menu-grid">
+                    {% for plat in categorie.plats %}
+                    <div class="menu-card">
+                        <span class="prix">{{ plat.prix }}</span>
+                        <h4>{{ plat.nom }}</h4>
+                        <p style="color: #666; font-size: 14px;">{{ plat.description }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="cuisine-section">
+        <div class="container">
+            <div class="cuisine-grid">
+                <div>
+                    <h2 style="color: var(--gold); font-size: 35px;">{{ page.cuisine.titre }}</h2>
+                    <p style="margin: 20px 0; opacity: 0.8;">{{ page.cuisine.texte }}</p>
+                </div>
+                <img src="{{ page.cuisine.image }}" class="cuisine-img" alt="Cuisine">
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: #111e2b; color: white; padding: 60px 0; text-align: center;">
+        <div class="container">
+            <p>{{ page.contact.adresse }}</p>
+            <p>Tél : {{ page.contact.telephone }}</p>
+            <div style="margin-top: 30px;">
+                {% for h in page.contact.horaires %}
+                <p style="font-size: 14px; opacity: 0.7;">{{ h.jour }} : {{ h.heures }}</p>
+                {% endfor %}
+            </div>
+            <p style="margin-top: 40px; font-size: 12px; opacity: 0.4;">&copy; {{ page.nom_du_resto }} — Tous droits réservés</p>
+        </div>
+    </footer>
 
 </body>
 </html>
