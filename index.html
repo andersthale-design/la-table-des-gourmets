@@ -1,172 +1,163 @@
 ---
-# ============================================================
-# CONFIGURATION POUR LE CLIENT (CloudCannon)
-# ============================================================
-
-# Infos générales
-nom_du_resto: "La Table des Gourmets"
-description_seo: "La Table des Gourmets — Gastronomie française traditionnelle à Nouméa. Cuisine alsacienne, plats du terroir, produits frais et faits maison."
-
-# Section Hero (Accueil)
+reservation:
+  mode: whatsapp
+  contact: '+687123456'
+  texte_bouton: Réserver une table
 hero:
-  image_fond: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
-  petit_titre: "Une expérience culinaire unique"
-  titre_principal: "Gastronomie Française"
-  sous_titre: "Cuisine authentique et produits du terroir au cœur de Nouméa"
-  texte_bouton: "Découvrir la carte"
-
-# La Carte (Le client peut ajouter/supprimer des plats ici)
+  image_fond: https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b
+  petit_titre: Une expérience culinaire unique
+  titre_principal: La Table des Gourmets
+  sous_titre: Gastronomie française traditionnelle à Nouméa
+  bouton_texte: Découvrir la carte
 menu_categories:
-  - nom: "Nos Entrées"
+  - nom_categorie: Entrées Signature
     plats:
-      - nom: "Escargots de Bourgogne"
-        prix: "2 100 F"
-        description: "Beurre persillé maison et ail frais."
-      - nom: "Foie Gras Maison"
-        prix: "3 200 F"
-        description: "Chutney de saison et pain brioché."
-  - nom: "Nos Plats Alsaciens"
+      - nom: Escargots de Bourgogne
+        description: Beurre persillé maison et ail frais de pays.
+        prix: 2 100 F
+      - nom: Foie Gras Maison
+        description: Chutney de saison et pain brioché toasté.
+        prix: 3 200 F
+  - nom_categorie: Plats de Résistance
     plats:
-      - nom: "Choucroute Royale"
-        prix: "3 800 F"
-        description: "Chou artisanal, assortiment de charcuterie fine."
-
-# Section Notre Cuisine
-cuisine:
-  titre: "Une Passion pour le Terroir"
-  texte: "Chaque plat est une invitation au voyage à travers les régions de France. Nous privilégions les circuits courts et le fait-maison."
-  image: "https://images.unsplash.com/photo-1559339352-11d035aa65de"
-
-# Contact & Horaires
-contact:
-  telephone: "+687 12 34 56"
-  adresse: "123 Rue de la Gastronomie, Nouméa"
-  email: "contact@latabledesgourmets.nc"
-  horaires:
-    - jour: "Lundi - Vendredi"
-      heures: "11:30 – 14:00, 18:30 – 22:00"
-    - jour: "Samedi"
-      heures: "18:30 – 23:00"
-    - jour: "Dimanche"
-      heures: "Fermé"
+      - nom: Choucroute Royale
+        description: Chou artisanal, assortiment de 5 charcuteries fines.
+        prix: 3 800 F
+  - nom_categorie: ''
+    plats:
+      - nom: ''
+        description: ''
+        prix: ''
+notre_cuisine:
+  titre: Une Passion pour le Terroir
+  texte: >-
+    Chaque plat est une invitation au voyage à travers les régions de France.
+    Nous privilégions les circuits courts et le fait-maison.
+  image_droite: https://images.unsplash.com/photo-1559339352-11d035aa65de
+horaires_liste:
+  - jour: Lundi - Vendredi
+    heures: 11:30 – 14:00, 18:30 – 22:00
+  - jour: Samedi
+    heures: 18:30 – 23:00
+  - jour: Dimanche
+    heures: Fermé
+contact_infos:
+  adresse: 123 Rue de la Gastronomie, Nouméa
+  telephone_affichage: +687 12 34 56
 ---
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ page.description_seo }}">
-    <title>{{ page.nom_du_resto }} — Gastronomie Française à Nouméa</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page.hero.titre_principal }}</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Jost:wght@300;400;600&display=swap" rel="stylesheet" />
+    
     <style>
-        /* TOUT VOTRE STYLE EST CONSERVÉ À L'IDENTIQUE */
+        /* On garde exactement ton design premium */
         :root {
-            --navy: #111e2b; --navy-mid: #1a2d40; --gold: #c8a04a; --gold-light: #e5cc8a;
-            --cream: #f7f3ea; --cream-card: #fcf9f3; --text-muted: #7a7060;
-            --radius-card: 20px; --radius-btn: 20px; --header-h: 68px;
-            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.07); --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --navy: #111e2b; --gold: #c8a04a; --gold-light: #e5cc8a; --cream: #f7f3ea;
+            --header-h: 68px;
         }
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--navy); line-height: 1.65; }
-        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+        body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--navy); margin: 0; }
         
-        /* Header */
-        .header { position: fixed; top: 0; width: 100%; height: var(--header-h); background: var(--navy); z-index: 1000; display: flex; align-items: center; }
-        .logo { font-size: 22px; font-weight: 700; color: var(--gold); text-decoration: none; }
+        /* Header & Nav */
+        header { position: fixed; width: 100%; height: var(--header-h); background: rgba(17,30,43,0.95); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; box-sizing: border-box; z-index: 1000; }
+        .logo { color: var(--gold); font-family: 'Cormorant Garamond'; font-size: 24px; text-decoration: none; font-weight: bold; }
+
+        /* Hero Section */
+        .hero { height: 100svh; background: url('{{ page.hero.image_fond }}') center/cover no-repeat; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+        .hero-content { position: relative; z-index: 1; padding: 0 20px; }
+        .hero h1 { font-family: 'Cormorant Garamond'; font-size: clamp(40px, 8vw, 80px); color: var(--gold); margin: 10px 0; }
         
-        /* Hero */
-        .hero { position: relative; height: 100svh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; overflow: hidden; }
-        .hero__bg { position: absolute; inset: 0; z-index: -1; }
-        .hero__bg img { width: 100%; height: 100%; object-fit: cover; }
-        .hero__overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
-        .hero__title { font-size: clamp(40px, 8vw, 72px); color: var(--gold); margin: 10px 0; }
-        .hero__cta { background: var(--gold); color: var(--navy); padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; text-transform: uppercase; display: inline-block; margin-top: 20px; }
+        /* Bouton Réservation Dynamique */
+        .btn-reserver { 
+            background: var(--gold); color: var(--navy); padding: 18px 35px; border-radius: 50px; 
+            text-decoration: none; font-weight: 600; display: inline-block; margin-top: 25px;
+            transition: 0.3s;
+        }
+        .btn-reserver:hover { background: var(--gold-light); transform: scale(1.05); }
 
-        /* Menu */
-        .menu-section { padding: 80px 0; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .menu-card { background: white; padding: 25px; border-radius: var(--radius-card); shadow: var(--shadow-card); border-left: 5px solid var(--gold); }
-        .prix { float: right; color: var(--gold); font-weight: 700; }
+        /* Menu Section */
+        .section { padding: 80px 10%; }
+        .category-title { font-family: 'Cormorant Garamond'; font-size: 32px; color: var(--gold); border-bottom: 1px solid var(--gold); margin-bottom: 30px; text-align: center; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .plat-card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .plat-header { display: flex; justify-content: space-between; font-weight: bold; border-bottom: 1px dashed #ddd; padding-bottom: 5px; }
+        .prix { color: var(--gold); }
 
-        /* Cuisine */
-        .cuisine-section { padding: 80px 0; background: var(--navy); color: white; }
-        .cuisine-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-        .cuisine-img { width: 100%; border-radius: 20px; }
-
-        @media (max-width: 768px) { .cuisine-grid { grid-template-columns: 1fr; } }
+        /* Footer */
+        footer { background: var(--navy); color: white; padding: 60px 10%; text-align: center; }
     </style>
 </head>
 <body>
 
-    <header class="header">
-        <div class="container">
-            <a href="#" class="logo">{{ page.nom_du_resto }}</a>
-        </div>
+    <header>
+        <a href="#" class="logo">{{ page.hero.titre_principal }}</a>
+        <nav>
+            {% if page.reservation.mode == "whatsapp" %}
+                <a href="https://wa.me/{{ page.reservation.contact }}" style="color:var(--gold); text-decoration:none; font-weight:bold;">RESERVER</a>
+            {% endif %}
+        </nav>
     </header>
 
     <section class="hero">
-        <div class="hero__bg">
-            <img src="{{ page.hero.image_fond }}" alt="Restaurant">
-            <div class="hero__overlay"></div>
-        </div>
-        <div class="container" style="position: relative;">
-            <span style="letter-spacing: 3px; text-transform: uppercase; color: var(--gold-light);">{{ page.hero.petit_titre }}</span>
-            <h1 class="hero__title">{{ page.hero.titre_principal }}</h1>
-            <p style="font-size: 20px;">{{ page.hero.sous_titre }}</p>
-            <a href="#carte" class="hero__cta">{{ page.hero.texte_bouton }}</a>
-        </div>
-    </section>
-
-    <section id="carte" class="menu-section">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 40px;">Notre Carte</h2>
+        <div class="hero-content">
+            <span style="letter-spacing: 4px; text-transform: uppercase;">{{ page.hero.petit_titre }}</span>
+            <h1>{{ page.hero.titre_principal }}</h1>
+            <p style="font-size: 1.2rem;">{{ page.hero.sous_titre }}</p>
             
-            {% for categorie in page.menu_categories %}
-            <div style="margin-top: 50px;">
-                <h3 style="color: var(--gold); font-size: 28px; text-align: center; border-bottom: 1px solid #ddd; padding-bottom: 10px;">{{ categorie.nom }}</h3>
-                <div class="menu-grid">
-                    {% for plat in categorie.plats %}
-                    <div class="menu-card">
+            {% if page.reservation.mode == "whatsapp" %}
+                <a href="https://wa.me/{{ page.reservation.contact }}" class="btn-reserver">{{ page.reservation.texte_bouton }} (WhatsApp)</a>
+            {% elsif page.reservation.mode == "appel" %}
+                <a href="tel:{{ page.reservation.contact }}" class="btn-reserver">{{ page.reservation.texte_bouton }} (Appeler)</a>
+            {% elsif page.reservation.mode == "sms" %}
+                <a href="sms:{{ page.reservation.contact }}" class="btn-reserver">{{ page.reservation.texte_bouton }} (SMS)</a>
+            {% elsif page.reservation.mode == "email" %}
+                <a href="mailto:{{ page.reservation.contact }}" class="btn-reserver">{{ page.reservation.texte_bouton }} (Email)</a>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="section" id="menu">
+        {% for cat in page.menu_categories %}
+            <h2 class="category-title">{{ cat.nom_categorie }}</h2>
+            <div class="menu-grid">
+                {% for plat in cat.plats %}
+                <div class="plat-card">
+                    <div class="plat-header">
+                        <span>{{ plat.nom }}</span>
                         <span class="prix">{{ plat.prix }}</span>
-                        <h4>{{ plat.nom }}</h4>
-                        <p style="color: #666; font-size: 14px;">{{ plat.description }}</p>
                     </div>
-                    {% endfor %}
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">{{ plat.description }}</p>
                 </div>
-            </div>
-            {% endfor %}
-        </div>
-    </section>
-
-    <section class="cuisine-section">
-        <div class="container">
-            <div class="cuisine-grid">
-                <div>
-                    <h2 style="color: var(--gold); font-size: 35px;">{{ page.cuisine.titre }}</h2>
-                    <p style="margin: 20px 0; opacity: 0.8;">{{ page.cuisine.texte }}</p>
-                </div>
-                <img src="{{ page.cuisine.image }}" class="cuisine-img" alt="Cuisine">
-            </div>
-        </div>
-    </section>
-
-    <footer style="background: #111e2b; color: white; padding: 60px 0; text-align: center;">
-        <div class="container">
-            <p>{{ page.contact.adresse }}</p>
-            <p>Tél : {{ page.contact.telephone }}</p>
-            <div style="margin-top: 30px;">
-                {% for h in page.contact.horaires %}
-                <p style="font-size: 14px; opacity: 0.7;">{{ h.jour }} : {{ h.heures }}</p>
                 {% endfor %}
             </div>
-            <p style="margin-top: 40px; font-size: 12px; opacity: 0.4;">&copy; {{ page.nom_du_resto }} — Tous droits réservés</p>
+            <br /><br />
+        {% endfor %}
+    </section>
+
+    <section class="section" style="background: white; display: flex; flex-wrap: wrap; gap: 50px; align-items: center;">
+        <div style="flex: 1; min-width: 300px;">
+            <h2 style="font-family: 'Cormorant Garamond'; font-size: 40px;">{{ page.notre_cuisine.titre }}</h2>
+            <p>{{ page.notre_cuisine.texte }}</p>
         </div>
+        <div style="flex: 1; min-width: 300px;">
+            <img src="{{ page.notre_cuisine.image_droite }}" style="width: 100%; border-radius: 20px;" alt="Cuisine" />
+        </div>
+    </section>
+
+    <footer>
+        <div style="margin-bottom: 40px;">
+            <h3>Nos Horaires</h3>
+            {% for h in page.horaires_liste %}
+                <p>{{ h.jour }} : {{ h.heures }}</p>
+            {% endfor %}
+        </div>
+        <p>{{ contact_infos.adresse }}</p>
+        <p>Tél : {{ contact_infos.telephone_affichage }}</p>
     </footer>
 
 </body>
