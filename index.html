@@ -1,58 +1,67 @@
 ---
+# ============================================================
+# PANNEAU DE CONTRÔLE DU RESTAURANT (Visible à gauche dans CloudCannon)
+# ============================================================
+
+# 1. RÉSERVATION DYNAMIQUE
 reservation:
-  mode: whatsapp
-  contact: '+687123456'
-  texte_bouton: Réserver une table
+  mode: "whatsapp"          # Options : "whatsapp", "appel", "sms", "email"
+  contact: "+687123456"    # Numéro ou email
+  texte_bouton: "Réserver une table"
+
+# 2. ACCUEIL (HERO)
 hero:
-  image_fond: https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b
-  petit_titre: Une expérience culinaire unique
-  titre_principal: La Table des Gourmets
-  sous_titre: Gastronomie française traditionnelle à Nouméa
-  bouton_texte: Découvrir la carte
+  image_fond: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b"
+  petit_titre: "Une expérience culinaire unique"
+  titre_principal: "La Table des Gourmets"
+  sous_titre: "Gastronomie française traditionnelle à Nouméa"
+  bouton_texte: "Découvrir la carte"
+
+# 3. LA CARTE (Ajoutez/Modifiez vos plats ici)
 menu_categories:
-  - nom_categorie: Entrées Signature
+  - nom_categorie: "Entrées Signature"
     plats:
-      - nom: Escargots de Bourgogne
-        description: Beurre persillé maison et ail frais de pays.
-        prix: 2 100 F
-      - nom: Foie Gras Maison
-        description: Chutney de saison et pain brioché toasté.
-        prix: 3 200 F
-  - nom_categorie: Plats de Résistance
+      - nom: "Escargots de Bourgogne"
+        description: "Beurre persillé maison et ail frais de pays."
+        prix: "2 100 F"
+      - nom: "Foie Gras Maison"
+        description: "Chutney de saison et pain brioché toasté."
+        prix: "3 200 F"
+  
+  - nom_categorie: "Plats de Résistance"
     plats:
-      - nom: Choucroute Royale
-        description: Chou artisanal, assortiment de 5 charcuteries fines.
-        prix: 3 800 F
-  - nom_categorie: ''
-    plats:
-      - nom: ''
-        description: ''
-        prix: ''
+      - nom: "Choucroute Royale"
+        description: "Chou artisanal, assortiment de 5 charcuteries fines."
+        prix: "3 800 F"
+
+# 4. SECTION HISTOIRE / CUISINE
 notre_cuisine:
-  titre: Une Passion pour le Terroir
-  texte: >-
-    Chaque plat est une invitation au voyage à travers les régions de France.
-    Nous privilégions les circuits courts et le fait-maison.
-  image_droite: https://images.unsplash.com/photo-1559339352-11d035aa65de
+  titre: "Une Passion pour le Terroir"
+  texte: "Chaque plat est une invitation au voyage à travers les régions de France. Nous privilégions les circuits courts et le fait-maison."
+  image_droite: "https://images.unsplash.com/photo-1559339352-11d035aa65de"
+
+# 5. HORAIRES & CONTACT
 horaires_liste:
-  - jour: Lundi - Vendredi
-    heures: 11:30 – 14:00, 18:30 – 22:00
-  - jour: Samedi
-    heures: 18:30 – 23:00
-  - jour: Dimanche
-    heures: Fermé
+  - jour: "Lundi - Vendredi"
+    heures: "11:30 – 14:00, 18:30 – 22:00"
+  - jour: "Samedi"
+    heures: "18:30 – 23:00"
+  - jour: "Dimanche"
+    heures: "Fermé"
+
 contact_infos:
-  adresse: 123 Rue de la Gastronomie, Nouméa
-  telephone_affichage: +687 12 34 56
+  adresse: "123 Rue de la Gastronomie, Nouméa"
+  telephone_affichage: "+687 12 34 56"
 ---
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.hero.titre_principal }}</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Jost:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
         /* On garde exactement ton design premium */
@@ -135,7 +144,7 @@ contact_infos:
                 </div>
                 {% endfor %}
             </div>
-            <br /><br />
+            <br><br>
         {% endfor %}
     </section>
 
@@ -145,7 +154,7 @@ contact_infos:
             <p>{{ page.notre_cuisine.texte }}</p>
         </div>
         <div style="flex: 1; min-width: 300px;">
-            <img src="{{ page.notre_cuisine.image_droite }}" style="width: 100%; border-radius: 20px;" alt="Cuisine" />
+            <img src="{{ page.notre_cuisine.image_droite }}" style="width: 100%; border-radius: 20px;" alt="Cuisine">
         </div>
     </section>
 
